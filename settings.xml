@@ -1,0 +1,9 @@
+<settings>
+    <servers>
+        <server>
+            <id>maven-releases</id>
+            <username>admin</username>
+            <password>Patil12345</password>
+        </server>
+    </servers>
+</settings>
