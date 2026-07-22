@@ -9,29 +9,35 @@ Project Architecture
 
 GitHub → Jenkins Server → Maven Build → SonarQube Analysis → Docker Build → Docker Hub → Kubernetes Master → Kubernetes Worker Node → Prometheus → Grafana
 
-Servers Used in This Project
-Server	Purpose
-Jenkins Server	CI/CD pipeline automation
-SonarQube Server	Code quality analysis
-Nexus Server	Artifact repository management
-Kubernetes Master Node	Cluster management and deployment
-Kubernetes Worker Node	Runs application pods
-Grafana Server	Monitoring dashboard visualization
-Prometheus	Installed inside Kubernetes Master using Jenkins pipeline
-AWS Security Group Configuration
+## Servers Used in This Project
+
+| Server                 | Purpose                                                   |
+| ---------------------- | --------------------------------------------------------- |
+| Jenkins Server         | CI/CD pipeline automation                                 |
+| SonarQube Server       | Code quality analysis                                     |
+| Nexus Server           | Artifact repository management                            |
+| Kubernetes Master Node | Cluster management and deployment                         |
+| Kubernetes Worker Node | Runs application pods                                     |
+| Grafana Server         | Monitoring dashboard visualization                        |
+| Prometheus             | Installed inside Kubernetes Master using Jenkins pipeline |
+
+---
+
+## AWS Security Group Configuration
 
 Open the following ports in the respective EC2 Security Groups:
 
-Service	Port	Purpose
-SSH	22	Remote server access
-Jenkins	8080	Jenkins Web UI
-SonarQube	9000	SonarQube Web UI
-Nexus	8081	Nexus Web UI
-Grafana	3000	Grafana Dashboard
-Prometheus	9090	Prometheus Web UI
-Node Exporter	9100	Node metrics
-Kubernetes API	6443	Kubernetes cluster access
-NodePort Range	30000-32767	Kubernetes services
+| Service        | Port        | Purpose                   |
+| -------------- | ----------- | ------------------------- |
+| SSH            | 22          | Remote server access      |
+| Jenkins        | 8080        | Jenkins Web UI            |
+| SonarQube      | 9000        | SonarQube Web UI          |
+| Nexus          | 8081        | Nexus Web UI              |
+| Grafana        | 3000        | Grafana Dashboard         |
+| Prometheus     | 9090        | Prometheus Web UI         |
+| Node Exporter  | 9100        | Node metrics              |
+| Kubernetes API | 6443        | Kubernetes cluster access |
+| NodePort Range | 30000-32767 | Kubernetes services       |
 
 # 1. Jenkins Server Setup
 
