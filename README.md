@@ -9,6 +9,9 @@ Project Architecture
 
 GitHub → Jenkins Server → Maven Build → SonarQube Analysis → Docker Build → Docker Hub → Kubernetes Master → Kubernetes Worker Node → Prometheus → Grafana
 
+![BoardGame Dashboard](screenshots/BroadGame-dashboard.png)
+
+
 ## Servers Used in This Project
 
 | Server                 | Purpose                                                   |
@@ -22,6 +25,7 @@ GitHub → Jenkins Server → Maven Build → SonarQube Analysis → Docker Buil
 | Prometheus             | Installed inside Kubernetes Master using Jenkins pipeline |
 
 ---
+![Servers](screenshots/Servers.png)
 
 ## AWS Security Group Configuration
 
@@ -140,6 +144,7 @@ trivy --version
 ---
 
 # 2. SonarQube Server Setup
+![Jenkins Dashboard](screenshots/jenkins-dashboard.png)
 
 ## Server Requirements
 
@@ -480,6 +485,7 @@ kubectl get nodes
 ---
 
 # 6. Grafana Server Setup
+![Grafana Dashboard](screenshots/grafana-dashboard.png)
 
 ## Server Requirements
 
@@ -534,6 +540,7 @@ Default credentials:
 ---
 
 # 7. Prometheus Installation Through Jenkins Pipeline
+![Prometheus Dashboard](screenshots/Prometheus.png)
 
 In this project, **Prometheus was not installed manually**. It was installed automatically inside the **Kubernetes Master Node** using a **Jenkins pipeline** with Helm.
 
