@@ -40,6 +40,7 @@ Open the following ports in the respective EC2 Security Groups:
 | NodePort Range | 30000-32767 | Kubernetes services       |
 
 # 1. Jenkins Server Setup
+![Jenkins Dashboard](screenshots/jenkins-dashboard.png)
 
 ## Server Requirements
 
