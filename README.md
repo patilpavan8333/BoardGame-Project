@@ -144,7 +144,7 @@ trivy --version
 ---
 
 # 2. SonarQube Server Setup
-![Jenkins Dashboard](screenshots/jenkins-dashboard.png)
+![SonarQube Dashboard](screenshots/sonarqube-dashboard.png)
 
 ## Server Requirements
 
@@ -485,7 +485,7 @@ kubectl get nodes
 ---
 
 # 6. Grafana Server Setup
-![Grafana Dashboard](screenshots/grafana-dashboard.png)
+![Grafana Dashboard](screenshots/Grafana-dashboard(2).png)
 
 ## Server Requirements
 
