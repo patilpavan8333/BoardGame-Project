@@ -1,0 +1,84 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  imageName: 'patil8333/myapp'
+
+stages:
+
+# =========================
+# BUILD & TEST
+# =========================
+- stage: Build
+  displayName: Build and Test
+
+  jobs:
+  - job: Build
+    displayName: Build Application
+
+    steps:
+
+    - task: JavaToolInstaller@0
+      displayName: Install Java 17
+      inputs:
+        versionSpec: '17'
+        jdkArchitectureOption: 'x64'
+        jdkSourceOption: 'PreInstalled'
+
+    - script: |
+        chmod +x mvnw
+        ./mvnw clean package
+      displayName: Build Spring Boot Application
+
+    - script: |
+        ./mvnw test
+      displayName: Run Tests
+
+# =========================
+# DOCKER BUILD
+# =========================
+- stage: Docker
+  displayName: Build Docker Image
+  dependsOn: Build
+
+  jobs:
+  - job: DockerBuild
+    displayName: Docker Build
+
+    steps:
+
+    - task: Docker@2
+      displayName: Build Docker Image
+      inputs:
+        command: build
+        Dockerfile: '**/Dockerfile'
+        repository: $(imageName)
+        tags: |
+          $(Build.BuildId)
+
+# =========================
+# PUSH TO DOCKER HUB
+# =========================
+- stage: Push
+  displayName: Push Docker Image
+  dependsOn: Docker
+
+  jobs:
+  - job: DockerPush
+    displayName: Push Image
+
+    steps:
+
+    - task: Docker@2
+      displayName: Build and Push Image
+      inputs:
+        command: buildAndPush
+        repository: $(imageName)
+        Dockerfile: '**/Dockerfile'
+        containerRegistry: 'dockerhub-connection'
+        tags: |
+          $(Build.BuildId)
+          latest
