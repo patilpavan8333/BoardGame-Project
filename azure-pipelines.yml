@@ -1,0 +1,16 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- script: |
+    docker --version
+    docker build -t myapp:latest .
+  displayName: 'Build Docker Image'
+
+- script: |
+    docker images
+  displayName: 'Check Docker Image'
